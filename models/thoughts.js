@@ -1,3 +1,4 @@
+// models/thoughts.js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -5,7 +6,7 @@ const Schema = mongoose.Schema;
 const reactionSchema = new Schema({
     reactionId: {
         type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId()
+        default: () => new mongoose.Types.ObjectId(),
     },
     reactionBody: { type: String, required: true, maxlength: 280 },
     username: { type: String, required: true },
@@ -16,12 +17,12 @@ const reactionSchema = new Schema({
 
 // Thought Schema
 const thoughtSchema = new Schema({
-  thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
-  username: { type: String, required: true }, // Or just type: String if not a ref
-  reactions: [reactionSchema]
+    thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
+    username: { type: String, required: true }, // This should reference User if users are modeled
+    reactions: [reactionSchema]
 }, {
-  toJSON: { virtuals: true, getters: true },
-  id: false
+    toJSON: { virtuals: true, getters: true },
+    id: false
 });
 
 // Virtual for reactionCount

@@ -13,10 +13,11 @@ const userSchema = new Schema({
     friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 }, {
     toJSON: {
-        virtuals: true,
+        virtuals: true,  // Ensure virtuals are included in JSON output
         getters: true
     },
-    id: false
+    id: false,
+    versionKey: false // This disables the __v field entirely
 });
 
 // Apply a transformation to ensure that the friends list only includes the specified fields
@@ -38,7 +39,7 @@ userSchema.set('toJSON', {
 
 // Virtual for friendCount to calculate the number of friends
 userSchema.virtual('friendCount').get(function() {
-    return this.friends ? this.friends.length : 0;
+    return this.friends.length;
 });
 
 const User = mongoose.model('User', userSchema);
