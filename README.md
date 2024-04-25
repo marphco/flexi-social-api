@@ -24,7 +24,7 @@ Once installed, run `npm start` to initiate the server. Access the API endpoints
 
 To give you a clearer understanding of how to effectively interact with the InfiniCart API, we have prepared a concise video demonstration below.
 
-
+https://github.com/marphco/flexi-social-api/assets/5993166/7b8b940d-5a45-475d-8d3f-9bf4d8690261
 
 ## License
 This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
